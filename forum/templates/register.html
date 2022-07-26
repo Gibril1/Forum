@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    <fieldset>
+        <h1 class="legend">Join Today</h1>
+        <div class="line"></div>
+        <div class="form-control">
+            {{ form.username.label }}
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    {{ form.username(placeholder='Enter username...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.username(placeholder='Enter username...') }}
+            {% endif %}
+        </div>
+        <div class="form-control">
+            {{ form.email.label }}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    {{ form.email(placeholder='Enter email...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.email(placeholder='Enter email...') }}
+            {% endif %}
+        </div>
+        <div class="form-control">
+            {{ form.password.label }}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    {{ form.password(placeholder='Enter password...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.password(placeholder='Enter password...') }}
+            {% endif %}
+        </div>
+        <div class="form-control">
+            {{ form.confirm_password.label }}
+            {% if form.confirm_password.errors %}
+                {% for error in form.confirm_password.errors %}
+                    {{ form.confirm_password(placeholder='Confirm Password...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.confirm_password(placeholder='Confirm Password...') }}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class="btn") }}
+        </div>
+    </fieldset>
+</form>
+{% endblock content %}

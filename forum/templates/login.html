@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    <fieldset>
+        <h1 class="legend">Login Here</h1>
+        {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages, category %}
+                {% for category, msg in messages %}
+                    <p class="{{category}}">{{ msg }}</p>
+                    
+                {% endfor %}
+            {% endif %}  
+        {% endwith %}
+        <div class="line"></div>
+        <div class="form-control">
+            {{ form.email.label }}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    {{ form.email(placeholder='Enter email...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.email(placeholder='Enter email...') }}
+            {% endif %}
+        </div>
+        <div class="form-control">
+            {{ form.password.label }}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    {{ form.password(placeholder='Enter password...') }}
+                    <small class="error">{{ error }}</small>
+                {% endfor %}
+            {% else %}
+                {{ form.password(placeholder='Enter password...') }}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class="btn") }}
+        </div>
+        <small class="not">Not Registered? <a href="{{url_for('register')}}">Click Here to Register</a></small>
+    </fieldset>
+</form>
+{% endblock content %}
