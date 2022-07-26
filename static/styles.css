@@ -1,7 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Flex:opsz,wght@8..144,300&display=swap');
+:root{
+    --background-color: #cccccc;
+    --primary-color: #3f3d56;
+}
+
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+/* Base Styling */
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+/* Utilities */
+.container{
+    max-width: 1134px;
+    padding: 0 20px;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.upper-case{
+    text-transform: uppercase;
+}
+
+.white{
+    color: white;
+    letter-spacing: 5px;
+    font-weight: lighter;
+}
+
+.l-heading{
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 62px;
+    padding-bottom: 20px;
+}
+
+.bg-dark{
+    background-color: #000;
+    color: #fff;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.bg-primary{
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.bg-light{
+    background-color: #cccccc;
+    color: #000;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.btn{
+    display: block;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+}
+
+.lead{
+    letter-spacing: 0.2rem;
+    color: #19109d;
+    font-weight: lighter;
+    font-size: 10px;
 }
 
 
+
+/* Navbar Styling */
+#navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+    padding: 20px 0;
+}
+
+#navbar h1{
+    font-family: 'Dancing Script', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 46px;
+}
+
+#navbar .icon-forum img{
+    color: #cccccc;
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: capitalize;
+
+}
+
+ul li{
+    margin-right: 20px;
+}
+
+#navbar a{
+    display: block;
+    padding: 13px 20px;
+}
+
+/* Hero Section */
+#hero{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    height: 60vh;
+    
+}
+
+.hero-content{
+    padding: 10px 20px;
+    margin: 20px;
+    width: 60%;
+    height: 100%;
+    /* border: 1px solid green; */
+}
+
+.hero-img{
+    width: 50%;
+}
+
+#hero img{
+    height: 100%;
+    width: 100%;
+}
+
+/* About  */
+#about{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 40vh;
+}
+
+.about-img{
+    width: 40%;
+}
+
+.about-img img{
+    height: 80%;
+    width: 80%;
+}
+
+.three-pack{
+    width: 40%;
+} 
+
+.three-pack img{
+    height: 90%;
+    width: 90%;
+}
+
+.about-text{
+    width: 40%;
+}
+
+.about-text h2{
+    font-weight: 200;
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: capitalize;
+    line-height: 1.5;
+}
+
+.about-text p{
+    text-transform: capitalize;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Contact */
+#contact{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form{
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form-group{
+    padding: 20px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.one{
+    border-bottom: none;
+}
+
+.form label{
+    display: block;
+    padding-bottom: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+.form input,
+textarea{
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 13px;
+}
+
+.contact-img{
+    width: 40%;
+}
+.contact-img img{
+    height: 60%;
+    width: 60%;
+}
