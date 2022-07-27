@@ -12,6 +12,11 @@
     {% endif %}
 </head>
 <body>
+    <nav id="navbar">
+        
+        <h1> <span class="icon-forum"><img src="{{ url_for('static', filename='images/icons.svg')}}" alt="forum"></span>Discussion Hub</h1>
+        {% block navbar %}{% endblock navbar %}
+    </nav>
     {% block content %}{% endblock content %}
 </body>
 </html>

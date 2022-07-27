@@ -21,12 +21,15 @@ li{
     list-style: none;
 }
 
+button{
+    cursor: pointer;
+}
+
 /* Utilities */
 .container{
     max-width: 1134px;
     padding: 0 20px;
     margin: auto;
-    /* border: 1px solid red; */
 }
 
 .capitalize{
@@ -76,6 +79,23 @@ li{
     padding: 10px 20px;
     border-radius: 15px;
     border: none;
+    cursor: pointer;
+}
+
+.btn-1{
+    display: block;
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.center{
+    text-align: center;
+}
+
+.error{
+    color: red;
 }
 
 .lead{
@@ -83,6 +103,20 @@ li{
     color: #19109d;
     font-weight: lighter;
     font-size: 10px;
+}
+
+.success{
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 10px;
+    text-align: center;
+}
+
+.failure{
+    background-color: crimson;
+    color: var(--background-color);
+    padding: 10px;
+    text-align: center;
 }
 
 
@@ -124,7 +158,7 @@ ul li{
     padding: 13px 20px;
 }
 
-/* Hero Section */
+/* Hero Section. Home Page */
 #hero{
     display: flex;
     justify-content: space-between;
@@ -150,7 +184,7 @@ ul li{
     width: 100%;
 }
 
-/* About  */
+/* About. Home Page  */
 #about{
     display: flex;
     justify-content: space-between;
@@ -194,47 +228,116 @@ ul li{
     text-align: justify;
 }
 
-/* Contact */
+/* Contact. Home Page */
 #contact{
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.form{
+#contact .form{
     width: 50%;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 15px;
 }
 
-.form-group{
+#contact .form-group{
     padding: 20px;
     border-bottom: 1px dotted #ccc;
 }
 
-.one{
+#contact .one{
     border-bottom: none;
 }
 
-.form label{
+contact .form label{
     display: block;
     padding-bottom: 10px;
     text-align: left;
     color: #fff;
 }
 
-.form input,
-textarea{
+#contact .form input,
+#contact textarea{
     width: 100%;
     border-radius: 10px;
     padding: 10px 13px;
 }
 
-.contact-img{
+#contact .contact-img{
     width: 40%;
 }
-.contact-img img{
+
+#contact .contact-img img{
     height: 60%;
     width: 60%;
 }
+
+/* Register and Login Pages */
+.entry{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.entry-text{
+    width: 30%;
+    margin-right: 20px;
+}
+
+.entry-text img{
+    width: 100%;
+    height: 100%;
+}
+
+/* resizing the image on the login page */
+.entry-text img[alt='login']{
+    height: 300px;
+    width: 300px;
+}
+
+.entry-text p{
+    padding-top: 20px;
+    text-align: justify;
+}
+
+.register{
+    flex: 1;
+    width: 70%;
+}
+
+.register  h1{
+    color: var(--primary-color);
+    font-weight: bolder;
+}
+
+.form-control{
+    /* border: 1px solid red; */
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.form-control label{
+    display: block;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.form-control input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: var(--background-color);
+    outline: 0;
+}
+
+.form-control input:active{
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+
+

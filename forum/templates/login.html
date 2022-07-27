@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+{% block navbar %}
+<ul>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a class="bg-dark" href="{{url_for('register')}}">Register</a></li>
+</ul>
+{% endblock navbar %}
+
 {% block content %}
-<form action="" method="POST">
-    {{ form.csrf_token }}
-    {{ form.name }}
-    <fieldset>
-        <h1 class="legend">Login Here</h1>
+<main class="entry container">
+    <section class="entry-text">
+        <img src="{{ url_for('static', filename='images/login.png')}}" alt="login">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure voluptatum et vel repellendus cumque adipisci at delectus totam, veniam consectetur vero incidunt rem ullam, modi mollitia optio illum atque deleniti!</p>
+    </section>
+    <form action="" method="POST" class="register">
+        {{ form.csrf_token }}
+        {{ form.name }}
+        
+        <h1 class="l-heading uppercase center">Login Here</h1>
         {% with messages = get_flashed_messages(with_categories = true) %}
             {% if messages, category %}
                 {% for category, msg in messages %}
@@ -38,9 +50,12 @@
             {% endif %}
         </div>
         <div>
-            {{ form.submit(class="btn") }}
+            {{ form.submit(class="btn bg-primary") }}
         </div>
-        <small class="not">Not Registered? <a href="{{url_for('register')}}">Click Here to Register</a></small>
-    </fieldset>
-</form>
+        <small>Not Registered? <a class="error" href="{{url_for('register')}}">Click Here to Register</a></small>
+    
+    </form>
+
+</main>
+
 {% endblock content %}

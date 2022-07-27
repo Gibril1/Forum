@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+{% block navbar %}
+<ul>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a class="bg-dark" href="{{url_for('login')}}">Login</a></li>
+</ul>
+{% endblock navbar %}
+
 {% block content %}
-<form action="" method="POST">
-    {{ form.csrf_token }}
-    {{ form.name }}
-    <fieldset>
-        <h1 class="legend">Join Today</h1>
+<main class="entry container">
+    <section class="entry-text">
+        <img src="{{ url_for('static', filename='images/register.png')}}" alt="">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure voluptatum et vel repellendus cumque adipisci at delectus totam, veniam consectetur vero incidunt rem ullam, modi mollitia optio illum atque deleniti!</p>
+    </section>
+    <form action="" method="POST" class="register">
+        {{ form.csrf_token }}
+        {{ form.name }}
+        
+        <h1 class="l-heading uppercase center">Join Today</h1>
         <div class="line"></div>
         <div class="form-control">
             {{ form.username.label }}
@@ -52,8 +64,10 @@
             {% endif %}
         </div>
         <div>
-            {{ form.submit(class="btn") }}
+            {{ form.submit(class="btn bg-primary") }}
         </div>
-    </fieldset>
-</form>
+
+    </form>
+</main>
+
 {% endblock content %}

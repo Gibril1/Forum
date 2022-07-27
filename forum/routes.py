@@ -1,8 +1,6 @@
-
-
 from flask import render_template, flash, url_for, request, redirect
 from forum import app, bcrypt, db
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from forum.forms import LoginForm, RegistrationForm
 from forum.models import User
 
@@ -18,6 +16,8 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
@@ -30,14 +30,25 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if request.method == 'POST':
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('discussions'))
         else:
             flash('Check email and password. Login Unsuccessful','failure')
     return render_template('login.html', form=form)
+
+@app.route('/discussions', methods=['GET'])
+def discussions():
+    return render_template('discussions.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 

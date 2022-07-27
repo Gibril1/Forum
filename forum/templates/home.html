@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
 
+{% block navbar %}
+<ul>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('discussions')}}">Discussions</a></li>
+        <li><a class="bg-dark" href="{{ url_for('logout')}}">Logout</a></li>
+    {% else %}
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="bg-dark" href="{{url_for('register')}}">Register</a></li>
+    {% endif %}
+</ul>
+{% endblock navbar %}
+
 {% block content %}
 <main class="container">
-    <nav id="navbar">
-        
-        <h1> <span class="icon-forum"><img src="{{ url_for('static', filename='images/icons.svg')}}" alt="forum"></span>Discussion Hub</h1>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a class="bg-dark" href="">Register</a></li>
-        </ul>
-    </nav>
+    
 
     <section id="hero">
         <article class="hero-content">
             <p class="lead">EDUCATION</p>
             <h1 class="capitalize l-heading">Connect with <br> peers and <br> discuss common topics</h1>
-            <button class="bg-primary capitalize btn">Click here to login</button>
+            <button><a href="{{ url_for('login')}}" class="capitalize btn-1">Click here to login</a></button>
         </article>
 
         <article class="hero-img">

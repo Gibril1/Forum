@@ -1,19 +1,22 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, ValidationError
-# from wtforms.validators import DataRequired, Email, Length, EqualTo
+from wtforms.validators import DataRequired, Length, EqualTo, Email
+# from email_validator import validate_email
 
 from forum.models import User
 
 class LoginForm(FlaskForm):
-    email = StringField('Email')
-    password = PasswordField('Password')
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=
+    [DataRequired(), Length(min=5,max=10)])
     submit = SubmitField('Login')
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username')
-    email = StringField('Email')
+    username = StringField('Username', validators=
+    [DataRequired(), Length(min=5,max=10)])
+    email = StringField('Email',validators=[DataRequired(), Email()])
     password = PasswordField('Password')
-    confirm_password = PasswordField('Confirm Password')
+    confirm_password = PasswordField('Confirm Password', validators=[EqualTo('password')])
     submit = SubmitField('Register')
 
     def validate_username(self,username):
