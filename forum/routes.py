@@ -1,12 +1,8 @@
 from flask import render_template, flash, url_for, request, redirect
 from forum import app, bcrypt, db
 from flask_login import current_user, login_user, logout_user, login_required
-from forum.forms import LoginForm, RegistrationForm
-from forum.models import User
-
-
-
-
+from forum.forms import LoginForm, RegistrationForm, PostForm
+from forum.models import User, Post, Comment
 
 
 @app.route('/')
@@ -45,7 +41,34 @@ def login():
 
 @app.route('/discussions', methods=['GET'])
 def discussions():
-    return render_template('discussions.html')
+    posts = Post.query.all()
+    return render_template('discussions.html',posts=posts)
+
+# creating a conversation
+@app.route('/post/new', methods=['GET','POST'])
+def post():
+    form = PostForm()
+    if request.method == 'POST':
+        post = Post(topic=form.topic.data,author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been added.','success')
+        return redirect(url_for('discussions'))
+    return render_template('post.html', form=form)
+
+# going to a specific route
+@app.route('/post/<int:post_id>', methods=['GET', 'POST'])
+def goto_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if request.method == 'POST':
+        comment = request.form['comment']
+        comment_post = Comment(comment=comment, post_id=post.id, author=current_user)
+        db.session.add(comment_post)
+        db.session.commit()
+    comments = Comment.query.filter_by(post_id=post.id).all()
+    return render_template('post_comments.html',post=post,comments=comments)
+    
+
 
 @app.route('/logout')
 def logout():

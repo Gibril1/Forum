@@ -3,12 +3,20 @@
 {% block navbar %}
 <ul>
     <li><a href="{{url_for('home')}}">Home</a></li>
-    <li><a class="bg-dark" href="">Start A Convo</a></li>
+    <li><a class="bg-dark" href="{{ url_for('post')}}">Start A Convo</a></li>
 </ul>
 {% endblock navbar %}
 
 {% block content %}
 <h1 class="l-heading uppercase center">
-    To be ready soon...
+    Join Any Conversation
 </h1>
+{% for post in posts %}
+    <div class="center mb-2 bg-light">
+        <a href="{{ url_for('goto_post', post_id=post.id)}}">
+            <p>Post by {{ post.author.username }}</p>
+            <p>{{ post.topic }}</p>
+        </a>
+    </div>
+{% endfor %}
 {% endblock content %}

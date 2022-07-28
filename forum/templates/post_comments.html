@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<ul>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a class="bg-dark" href="{{ url_for('post')}}">Start A Convo</a></li>
+</ul>
+{% endblock navbar %}
+
+{% block content %}
+<main class="container">
+    <header class="heading">
+        <p href="" class="center">Post by {{ post.author.username}}</p>
+        <p class="center">{{ post.topic }}</p>
+    </header>
+    <section>
+        <button class="btn-1 bg-primary mb-2" id="add">Add A Comment</button>
+        {% for comment in comments %}
+        <div class="center bg-primary mb-2">
+            <a href="">{{ comment.author.username}}</a>
+            <p class="mb-2">{{ comment.comment }}</p>
+        </div>
+        {% endfor %}
+        <form action="" method="POST" id="post">
+            
+        </form>
+    </section>
+</main>
+
+{% endblock content %}

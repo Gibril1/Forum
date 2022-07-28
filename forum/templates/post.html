@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<ul>
+    <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a class="bg-dark" href="{{ url_for('discussions')}}">Join A Convo</a></li>
+{% endblock navbar %}
+
+{% block content %}
+<form action="" method="POST" class="container">
+    {{ form.csrf_token }}
+    {{ form.name }}
+        
+    <h1 class="l-heading uppercase center">Make A Post</h1>
+    <div class="line"></div>
+    <div class="form-control">
+        {{ form.topic.label }}
+        {% if form.topic.errors %}
+            {% for error in form.topic.errors %}
+                {{ form.topic }}
+                <small class="error">{{ error }}</small>
+            {% endfor %}
+        {% else %}
+            {{ form.topic }}
+        {% endif %}
+    </div>
+    <div>
+        {{ form.submit(class="btn bg-primary") }}
+    </div>
+</form>
+{% endblock content %}

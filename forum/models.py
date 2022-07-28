@@ -10,5 +10,24 @@ class User(db.Model, UserMixin):
         username = db.Column(db.String(20), nullable = False, unique=True)
         email = db.Column(db.String(60), nullable = False, unique=True)
         password = db.Column(db.String(60), nullable = False)
+        posts = db.relationship('Post', backref = 'author', lazy = True)
+        comment = db.relationship('Comment', backref = 'author', lazy = True)
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    topic = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+    comments = db.relationship('Comment', backref='poster', lazy = True)
+
+
+    def __repr__(self):
+        return f'Post({self.post})'
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.Text, nullable = False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+
 
         

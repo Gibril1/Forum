@@ -28,3 +28,7 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('This email has been taken already')
+
+class PostForm(FlaskForm):
+    topic = TextAreaField('Topic', validators=[DataRequired()])
+    submit = SubmitField('Post')
