@@ -40,12 +40,14 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/discussions', methods=['GET'])
+@login_required
 def discussions():
     posts = Post.query.all()
     return render_template('discussions.html',posts=posts)
 
 # creating a conversation
 @app.route('/post/new', methods=['GET','POST'])
+@login_required
 def post():
     form = PostForm()
     if request.method == 'POST':
@@ -58,6 +60,7 @@ def post():
 
 # going to a specific route
 @app.route('/post/<int:post_id>', methods=['GET', 'POST'])
+@login_required
 def goto_post(post_id):
     post = Post.query.get_or_404(post_id)
     if request.method == 'POST':
