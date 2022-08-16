@@ -1,4 +1,4 @@
-from forum import db, login_manager
+from forum import db, login_manager, admin, ModelView
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -21,7 +21,7 @@ class Post(db.Model):
 
 
     def __repr__(self):
-        return f'Post({self.post})'
+        return f'Post({self.topic})'
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,5 +29,8 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
 
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Post, db.session))
+admin.add_view(ModelView(Comment, db.session))
 
         
