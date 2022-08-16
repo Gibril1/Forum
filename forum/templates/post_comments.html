@@ -10,14 +10,14 @@
 {% block content %}
 <main class="container">
     <header class="heading">
-        <p href="" class="center">Post by {{ post.author.username}}</p>
+        <p href="" class="center primary-color">Post by {{ post.author.username}}</p>
         <p class="center">{{ post.topic }}</p>
     </header>
     <section>
         <button class="btn-1 bg-primary mb-2" id="add">Add A Comment</button>
         {% for comment in comments %}
-        <div class="center bg-primary mb-2">
-            <a href="">{{ comment.author.username}}</a>
+        <div class="center mb-2 post-review">
+            <a href="" class="primary-color">{{ comment.author.username}}</a>
             <p class="mb-2">{{ comment.comment }}</p>
         </div>
         {% endfor %}

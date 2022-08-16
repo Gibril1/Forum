@@ -8,15 +8,18 @@
 {% endblock navbar %}
 
 {% block content %}
-<h1 class="l-heading uppercase center">
-    Join Any Conversation
-</h1>
-{% for post in posts %}
-    <div class="center mb-2 bg-light">
-        <a href="{{ url_for('goto_post', post_id=post.id)}}">
-            <p>Post by {{ post.author.username }}</p>
-            <p>{{ post.topic }}</p>
-        </a>
-    </div>
-{% endfor %}
+    <section class="container">
+        <h1 class="l-heading uppercase center">
+            Join Any Conversation
+        </h1>
+        {% for post in posts %}
+            <div class="post-review">
+                <a href="{{ url_for('goto_post', post_id=post.id)}}">
+                    <p>Post by {{ post.author.username }}</p>
+                    <h3>{{ post.topic }}</h3>
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+
 {% endblock content %}

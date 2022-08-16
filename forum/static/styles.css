@@ -27,9 +27,15 @@ button{
 
 /* Utilities */
 .container{
-    max-width: 1134px;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
     padding: 0 20px;
-    margin: auto;
+    text-align: center;
+}
+
+.primary-color{
+    color: var(--primary-color);
 }
 
 .capitalize{
@@ -50,15 +56,6 @@ button{
     margin-bottom: 20px;
 }
 
-.line{
-    background-color: var(--primary-color);
-    padding: 2px 50px;
-    height: 5px;
-    width: 5px;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: left;
-}
 
 .l-heading{
     font-size: 64px;
@@ -89,11 +86,19 @@ button{
 }
 
 .btn{
-    display: block;
     padding: 10px 20px;
-    border-radius: 15px;
-    border: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
+    text-align: center;
+    appearance: button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -368,6 +373,22 @@ contact .form label{
 .heading{
     padding: 10px 0;
     margin: 20px;
+}
+
+.post-review{
+    padding: 10px 16px;
+    margin: 20px 0;
+    border-bottom: 2px solid #fafafa;
+}
+
+.post-review:hover{
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-review h2{
+    font-size: 20px;
+    color: #e6e6e6;
+    margin-bottom: 8px;
 }
 
 .authors-name{
