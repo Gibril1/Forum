@@ -1,5 +1,4 @@
 # Forum
 This is a flask-powered application. It's maily for communication purposes designed for students
 
-First of all, i will start by setting up the needed files.
-I will create templates that will be rendered onto the web page in the templates folder
+It can be likened to a blog post with comments. The workflow of this application is simple. A logged in user can start a conversation by making a post. Any other user can join the conversation by commenting on the post
